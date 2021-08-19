@@ -1,0 +1,42 @@
+<?php echo $this->form->renderForm(false); ?>
+
+<style type="text/css">
+    button:hover {
+        color:#FFF !important;
+    }
+    
+    #tblHistorico td, #tblHistorico th {
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    
+</style>
+
+<div class="col-md-12">
+    <h2 align="center">Registrar Autorizado</h2>
+
+    <table class="table general table-bordered table-condensed" style="width:40%">
+        <caption>DATOS BÚSQUEDA</caption>
+        <tbody>
+            <tr>
+                <th style="text-align:center;width:40%;vertical-align:middle;">
+                    <?php echo $this->form->getElement(Application_Form_Autorizado::E_FICHA)->getLabel(); ?>
+                </th>
+                <td>
+                    <?php 
+                        echo $this->form->getElement(Application_Form_Autorizado::E_FICHA)->renderViewHelper(),
+                             $this->form->getElement(Application_Form_Autorizado::E_FICHA)->getDescription(),
+                             $this->form->getElement(Application_Form_Autorizado::E_FICHA)->renderErrors();
+                    ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p align="center">
+        <?php 
+            echo $this->form->getElement(Application_Form_Autorizado::E_REGISTRAR)->renderViewHelper();
+        ?>
+    </p>
+</div>

@@ -1,0 +1,42 @@
+<?php
+$sistema = Zend_Registry::get('sistema');
+$usuario = Fmo_Model_Seguridad::getUsuarioSesion();
+?>
+<h1 style="text-transform: uppercase; text-align: center;">
+    <?php echo $this->escape($sistema['titulo']), ' (', $this->escape($sistema['siglado']), ')'; ?>
+</h1>
+<p style="margin-left: 10px; margin-right: 10px; text-align: justify;">
+<?php
+if (isset($usuario->nombre, $usuario->apellido)):
+    echo '¡Enhorabuena <b>';
+    echo ucwords(strtolower($usuario->nombre . ' ' . $usuario->apellido));
+    echo '</b>! has entrado al ';
+endif; ?><b><?php echo $sistema['titulo']; ?> (<?php echo strtoupper($sistema['siglado']); ?>)</b>, el objetivo de
+    este proyecto es proveerte de un punto de partida para el inicio de tu <b>Sistema</b>.
+    Esta aplicación utiliza como <a href="http://es.wikipedia.org/wiki/Framework">Marco de Trabajo (Framework)</a> a
+    <a href="http://es.wikipedia.org/wiki/Zend_Framework">Zend Framework v<?php echo Zend_Version::VERSION; ?></a> para proveernos de una estructura y una metodología de trabajo la
+    cual utilizan las aplicaciones desarrolladas en el <b>Departamento de
+        Mantenimiento y Desarrollo de Sistemas</b>, adscrito a la <b>Gerencia de Telemática</b>
+    de <b>Ferrominera Orinoco</b>.</p>
+<p style="margin-left: 10px; margin-right: 10px; text-align: justify;">
+    <b>¿Que es <i>Zend Framework (ZF)</i>?</b>,
+    es un <i>framework</i> de código abierto para desarrollar
+    aplicaciones web y servicios web con <a href="http://es.wikipedia.org/wiki/PHP">PHP 5</a>. Es
+    una implementación que usa código 100% orientado a objetos. La estructura de los
+    componentes es algo único; cada componente está construido con una baja dependencia de otros
+    componentes. Esta arquitectura débilmente acoplada permite a los desarrolladores
+    utilizar los componentes por separado.
+</p>
+<p style="margin-left: 10px; margin-right: 10px; text-align: justify;">
+    Aunque se pueden utilizar de forma individual, los componentes de la biblioteca
+    estándar de <i>Zend Framework</i> conforman un potente y extensible <i>framework</i> de
+    aplicaciones web al combinarse. Ofreciendo un gran rendimiento y una robusta
+    implementación <a href="http://es.wikipedia.org/wiki/Modelo_Vista_Controlador">MVC</a>,
+    una abstracción de Base de Datos fácil de usar, y un componente de formularios que
+    implementa la prestación de formularios HTML, validación y filtrado para que los
+    desarrolladores puedan consolidar todas las operaciones usando de una manera
+    sencilla la interfaz orientada a objetos.
+</p>
+<p style="margin-left: 10px; margin-right: 10px;">
+    Sitio Oficial: <a href="http://www.framework.zend.com/"><?php echo $this->img('zflogo.png', array('alt' => 'Logo Zend Framework')); ?></a>
+</p>

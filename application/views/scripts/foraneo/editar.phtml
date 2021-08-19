@@ -1,0 +1,109 @@
+<?php echo $this->form->renderForm(false); ?>
+
+<style type="text/css">
+    button:hover {
+        color:#FFF !important;
+    }
+</style>
+
+<div class="col-md-12">
+    
+        <h2 align="center">Editar Información de Trabajador Foraneo</h2>
+
+        <table class="table general table-bordered table-condensed" style="width:40%">
+            <caption>Formulario</caption>
+            <tbody>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_EditarForaneo::E_CEDULA)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_EditarForaneo::E_CEDULA)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_CEDULA)->getDescription(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_CEDULA)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_EditarForaneo::E_FICHA)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_EditarForaneo::E_FICHA)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_FICHA)->getDescription(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_FICHA)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_EditarForaneo::E_NOMBRE)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_EditarForaneo::E_NOMBRE)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_NOMBRE)->getDescription(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_NOMBRE)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_EditarForaneo::E_APELLIDO)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_EditarForaneo::E_APELLIDO)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_APELLIDO)->getDescription(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_APELLIDO)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_EditarForaneo::E_EMPRESA)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_EditarForaneo::E_EMPRESA)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_EMPRESA)->getDescription(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_EMPRESA)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr type="hidden">            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_EditarForaneo::E_ESTADO)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_EditarForaneo::E_ESTADO)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_ESTADO)->getDescription(),
+                                 $this->form->getElement(Application_Form_EditarForaneo::E_ESTADO)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+
+        <p align="center">
+            <?php 
+            echo $this->form->getElement(Application_Form_EditarForaneo::E_CANCELAR)->renderViewHelper(); 
+                echo $this->form->getElement(Application_Form_EditarForaneo::E_GUARDAR)->renderViewHelper();   
+            ?>
+        </p>
+       
+        
+
+
+</div>

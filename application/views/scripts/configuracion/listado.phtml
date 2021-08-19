@@ -1,0 +1,77 @@
+<table class="general" summary="LISTADO DE VARIABLES DE CONFIGURACIÓN" style="width:80%;">
+<caption>LISTADO DE VARIABLES DE CONFIGURACIÓN</caption>
+<thead>
+<tr>
+    <th width="5%">Código</th>
+    <th>Variable</th>
+    <th width="25%">Valor</th>
+    <th width="6%" colspan="2">Opciones</th>
+</tr>
+</thead>
+<tbody>
+<?php
+if ($this->datos instanceof Zend_Paginator and $this->datos->count()): 
+    foreach ($this->datos as $key => $config): ?>
+<tr>
+    <td align="center"><?php echo $this->escape($config->id); ?></td>
+    <td><?php echo $this->escape($config->nombre); ?></td>
+    <td align="center"><?php 
+        switch ($config->tipo_dato):
+            case Application_Model_DbTable_Configuracion::T_BOOLEAN:
+                echo $this->escape(Application_Form_Configuracion::$booleanOptions[$config->valor]);
+                break;
+            case Application_Model_DbTable_Configuracion::T_DATE:
+                echo $this->escape(Fmo_Util::stringToZendDate($config->valor)->toString(Zend_Date::DATES));
+                break;
+            case Application_Model_DbTable_Configuracion::T_TIMESTAMP_WITHOUT_TIME_ZONE:
+                echo $this->escape(Fmo_Util::stringToZendDate($config->valor)->toString(Zend_Date::DATETIME));
+                break;            
+            case Application_Model_DbTable_Configuracion::T_TIME_WITHOUT_TIME_ZONE:
+                echo $this->escape(Fmo_Util::stringToZendDate($config->valor, 'HH:mm:ss ZZZZ')->toString(Zend_Date::TIMES));
+                break;                        
+            case Application_Model_DbTable_Configuracion::T_FLOAT:
+            case Application_Model_DbTable_Configuracion::T_INTEGER:
+            case Application_Model_DbTable_Configuracion::T_NUMERIC:
+            case Application_Model_DbTable_Configuracion::T_SMALLINT:
+                echo $this->escape(Zend_Locale_Format::toNumber($config->valor));
+                break;
+            case Application_Model_DbTable_Configuracion::T_INTERVAL:
+                echo $this->escape(Fmo_Util::translateAgeEnglighToSpanish($config->valor));
+                break;
+            case Application_Model_DbTable_Configuracion::T_ARRAY:
+                echo $this->escape(Fmo_Util::implodeToTextSpanish(Fmo_Util::pgArrayParse($config->valor)));
+                break;
+            case Application_Model_DbTable_Configuracion::T_LIST:
+                $listRow = $config->findParentRow('Application_Model_DbTable_ConfiguracionLista');
+                if ($listRow instanceof Zend_Db_Table_Row_Abstract):
+                    echo $this->escape($listRow->nombre);
+                    break;
+                endif;                
+            default:
+                echo $this->escape($config->valor);
+                break;
+        endswitch; ?></td>
+    <td align="center">
+        <a href="<?php echo $this->url(array('action' => 'detalle', ConfiguracionController::P_CODIGO => $config->id)); ?>" title="Detalle"><?php echo $this->img('ico_detalle.png'); ?></a>
+    </td>
+    <td align="center">
+        <a href="<?php echo $this->url(array('action' => 'editar', ConfiguracionController::P_CODIGO => $config->id)); ?>" title="Editar"><?php echo $this->img('ico_editar.png'); ?></a>
+    </td>
+</tr>    
+<?php
+    endforeach;
+else: ?>
+<tr>
+    <td align="center" colspan="4">Disculpe, la consulta no devolvió registros.</td>
+</tr>
+<?php
+endif;
+?>
+</tbody>
+</table>
+<?php
+if ($this->datos instanceof Zend_Paginator):
+    echo $this->paginationControl($this->datos);
+endif;
+?>
+<br/>

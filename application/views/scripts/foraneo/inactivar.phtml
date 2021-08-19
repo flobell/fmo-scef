@@ -1,0 +1,129 @@
+
+<?php echo $this->form->renderForm(false); ?>
+
+<style type="text/css">
+    button:hover {
+        color:#FFF !important;
+    }
+    
+    #tblFicha td, #tblFicha th {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+<div class="col-md-12">
+    <h2 align="center">Inactivar Ficha</h2>
+
+    <?php
+        $trabajador = $this->form->getTrabajador();
+        if ($trabajador):
+            $histFicha = $this->form->getRegistro();
+    ?>
+            <table class="table general table-bordered table-condensed" summary="Datos Ficha" style="width:80%;">
+                <caption>DATOS DEL TRABAJADOR</caption>
+                <tbody>  
+                    <tr>
+                        <th >Ficha:</th>
+                        <td><?php echo $trabajador->ficha; ?> </td>
+                        
+                        <th >Empresa:</th>
+                        <td class="text-center">
+                            <?php echo $trabajador->empresa; ?>
+                        </td>
+
+                    </tr>
+                    
+                    <tr>
+                        <th >Cédula:</th>
+                        <td><?php echo $trabajador->cedula; ?> </td>
+
+                        <th >Fecha Registro:</th>
+                        <td class="text-center">
+                            <?php echo Fmo_Util::stringToZendDate($trabajador->fecha_crea)->get('dd/MM/yyyy'); ?>
+                        </td>
+
+                    </tr>
+                    
+                    <tr>
+                        <th >Nombre:</th>
+                        <td><?php echo $trabajador->apellido, ", ", $trabajador->nombre; ?> </td>
+                    
+                        <th >Actividad:</th>
+                        <td class="text-center">
+                            <?php echo $trabajador->estado ? 'Activo': 'Inactivo'?> 
+                        </td>
+                    </tr>
+                </tbody> 
+            </table>
+
+            <br>
+
+            <table id="tblFicha" class="table general table-bordered table-condensed" summary="Datos Fichas" style="width:80%;">
+                <caption>DATOS DE FICHA</caption>
+                <thead>
+                    <tr>
+                        <th style="width:10%;">Cod. Tarjeta</th>
+                        <th style="width:6%;">Activa</th>
+                        <th style="width:8%;">Fecha Emisión</th>
+                        <th style="width:20%;">Emitida por</th>
+                        <th style="width:10%;">Motivo Inactivación</th>
+                    </tr>
+                </thead>
+                <tbody>  
+                    <?php
+                        if ($histFicha):
+                    ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $histFicha->cod_ficha; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $histFicha->activa ? $this->img('ico_bien.png') : $this->img('ico_mal.png'); ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo Fmo_Util::stringToZendDate($histFicha->fecha_crea)->get('dd/MM/yyyy'), '<br>',
+                                                 Fmo_Util::stringToZendDate($histFicha->fecha_crea)->get('hh:mma')
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $histFicha->usu_crea ? $histFicha->nombre_usu_crea . '<br><b>FMO-' . $histFicha->ficha_usu_crea . '</b> ' : '-';
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $this->form->getElement(Application_Form_InactivarFicha::E_MOTIVO)->renderViewHelper(),
+                                                 $this->form->getElement(Application_Form_InactivarFicha::E_MOTIVO)->renderErrors();
+                                        ?>
+                                    </td>
+                                </tr>                
+                    <?php
+                        else:
+                    ?>
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <i>El trabajador no tiene ficha activa.</i>
+                                </td>
+                            </tr>
+                    <?php
+                        endif;
+                    ?>
+                </tbody>
+            </table>
+            <br>
+            <p align="center">
+                <?php
+                    echo $this->form->getElement(Application_Form_InactivarFicha::E_CANCELAR)->renderViewHelper();
+
+                    if ($histFicha) {
+                        echo $this->form->getElement(Application_Form_InactivarFicha::E_INACTIVAR)->renderViewHelper();
+                    }
+                ?>
+            </p>
+    <?php
+        endif;
+    ?>
+
+</div>

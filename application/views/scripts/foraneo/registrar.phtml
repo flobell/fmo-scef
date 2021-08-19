@@ -1,0 +1,116 @@
+<?php echo $this->form->renderForm(false); ?>
+
+<style type="text/css">
+    button:hover {
+        color:#FFF !important;
+    }
+    
+    #tblHistorico td, #tblHistorico th {
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    
+</style>
+
+<div class="col-md-12">
+    
+        <h2 align="center">Registrar Trabajador Foraneo</h2>
+
+        <table class="table general table-bordered table-condensed" style="width:40%">
+            <caption>Formulario</caption>
+            <tbody>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_RegistrarForaneo::E_CEDULA)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_RegistrarForaneo::E_CEDULA)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_CEDULA)->getDescription(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_CEDULA)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_RegistrarForaneo::E_FICHA)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_RegistrarForaneo::E_FICHA)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_FICHA)->getDescription(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_FICHA)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_RegistrarForaneo::E_NOMBRE)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_RegistrarForaneo::E_NOMBRE)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_NOMBRE)->getDescription(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_NOMBRE)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_RegistrarForaneo::E_APELLIDO)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_RegistrarForaneo::E_APELLIDO)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_APELLIDO)->getDescription(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_APELLIDO)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr>            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_RegistrarForaneo::E_EMPRESA)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_RegistrarForaneo::E_EMPRESA)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_EMPRESA)->getDescription(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_EMPRESA)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                <tr type="hidden">            
+                    <th style="text-align:center;width:20%;vertical-align:middle;">
+                        <?php echo $this->form->getElement(Application_Form_RegistrarForaneo::E_ESTADO)->getLabel(); ?>
+                    </th>
+                    <td>
+                        <?php 
+                            echo $this->form->getElement(Application_Form_RegistrarForaneo::E_ESTADO)->renderViewHelper(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_ESTADO)->getDescription(),
+                                 $this->form->getElement(Application_Form_RegistrarForaneo::E_ESTADO)->renderErrors();
+                        ?>
+                    </td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+
+        <p align="center">
+            <?php 
+            echo $this->form->getElement(Application_Form_RegistrarForaneo::E_CANCELAR)->renderViewHelper(); 
+                echo $this->form->getElement(Application_Form_RegistrarForaneo::E_REGISTRAR)->renderViewHelper();   
+            ?>
+        </p>
+       
+        
+
+
+</div>
